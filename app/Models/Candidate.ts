@@ -1,5 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import User from './User'
+import Experience from './Experience'
 
 /*De **Candidate** tendremos:
 
@@ -19,7 +21,7 @@ import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 
 export default class Candidate extends BaseModel {
   @column({ isPrimary: true })
-  public candidateId: number
+  public id: number
 
   @column()
   public name: string
@@ -43,6 +45,18 @@ export default class Candidate extends BaseModel {
   public mobility: boolean
   @column()
   public active: boolean
+
   @column()
   public userId: number
+  @belongsTo(() => User)
+  public user: BelongsTo<typeof User>
+
+  @hasMany(() => Experience)
+  public experiences: HasMany<typeof Experience>
+
+  @column.dateTime({ autoCreate: true })
+  public createdAt: DateTime;
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  public updatedAt: DateTime;
+
 }

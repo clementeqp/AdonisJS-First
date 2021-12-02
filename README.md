@@ -45,7 +45,7 @@ De **Experience** tendremos:
 
 - *Candidate* (relación)
 - *Skill* (relación)
-- Nivel (enum - junior, semi-senior o senior)
+- Nivel (number 1 - junior,2  semi-senior o 3 senior)
 
 **Fase de creación en Adonis**
 

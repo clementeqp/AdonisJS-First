@@ -1,23 +1,42 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
+import Skill from './Skill'
+import Candidate from './Candidate'
 
 /*
 De **Experience** tendremos:
 
 - *Candidate* (relación)
 - *Skill* (relación)
-- Nivel (enum - junior, semi-senior o senior)
+- Nivel (1 - junior, 2-semi-senior o 3-senior)
 
 */
 
 export default class Experience extends BaseModel {
   @column({ isPrimary: true })
-  public experienceId: number
+  public id: number
+
+
   @column()
   public candidateId: number
+  @belongsTo(() =>Candidate)
+  public candidate: BelongsTo<typeof Candidate>
+
+
   @column()
   public skillId: number
-  //Enum junior, semi-senior o senior
+  @belongsTo(() => Skill)
+  public skill: BelongsTo<typeof Skill>
+
+
+  // 1 junior, 2 semi-senior o 3 senior
   @column()
-  public level: string
+  public level: number
+
+  @column.dateTime({ autoCreate: true })
+  public createdAt: DateTime;
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  public updatedAt: DateTime;
+
+
 }

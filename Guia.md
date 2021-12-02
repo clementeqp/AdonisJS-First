@@ -20,13 +20,22 @@
 * node ace make: model User -mc
   Crea el modelo User, la migracion y el controlador.
 
+  Creamos los campos de cada modelo.
+  en el modelo y en la migracion
+
 * node ace make:validator CreateUser
   Crea el validador de la creacion
 
 * node ace migration:run
   Ejecutamos la migracion
 
+* node ace migration:rollback
+  Deshacer migracion
+  
+
 
 ## Autenticacion
 
 * npm i @adonisjs/auth
+
+
