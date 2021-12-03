@@ -26,12 +26,17 @@
 * node ace make:validator CreateUser
   Crea el validador de la creacion
 
+
+
 * node ace migration:run
-  Ejecutamos la migracion
+  Ejecutamos la migracion(Deben estar en el orden correcto segun las relaciones para ejecutar la migracion)
 
 * node ace migration:rollback
   Deshacer migracion
   
+## Routes
+* node ace list:routes
+
 
 
 ## Autenticacion
