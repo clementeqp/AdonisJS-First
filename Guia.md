@@ -42,5 +42,6 @@
 ## Autenticacion
 
 * npm i @adonisjs/auth
+* node ace configure @adonisjs/auth
 
 
