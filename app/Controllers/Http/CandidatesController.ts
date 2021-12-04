@@ -4,7 +4,7 @@ import Candidate from 'App/Models/Candidate';
 export default class CandidatesController {
 
   // SELECT * from users (FindAll)
-  public async index(ctx: HttpContextContract) {
+  public async index( ) {
     return Candidate.all();
   }
 
@@ -21,7 +21,7 @@ export default class CandidatesController {
   }
 
   // Update
-  public async update({request,params,response}: HttpContextContract) {
+  public async update({request,params}: HttpContextContract) {
     const body = request.body();
     const candidate = await Candidate.findOrFail(params.id);
     candidate.merge(body);

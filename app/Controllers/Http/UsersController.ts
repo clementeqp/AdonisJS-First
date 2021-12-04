@@ -6,7 +6,7 @@ import { schema, rules} from '@ioc:Adonis/Core/Validator';
 export default class UsersController {
 
   // SELECT * from users
-  public async index(ctx: HttpContextContract) {
+  public async index() {
     return User.all();
   }
 
