@@ -1,9 +1,11 @@
+/**
+ * Config source: https://git.io/JY0mp
+ *
+ * Feel free to let us know via PR, if you find something broken in this config
+ * file.
+ */
+
 import { AuthConfig } from '@ioc:Adonis/Addons/Auth'
-
-
-
-
-
 
 /*
 |--------------------------------------------------------------------------

@@ -49,3 +49,10 @@
 
 * npm i phc-argon2
 
+
+
+
+## Deploy
+* node ace build --production
+    OR use the npm script
+* npm run build
