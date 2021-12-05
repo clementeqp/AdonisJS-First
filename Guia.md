@@ -56,3 +56,10 @@
 * node ace build --production
     OR use the npm script
 * npm run build
+
+* Procfile
+
+    * release: ENV_SILENT=true node ./build/ace migration:run --force
+    * web: ENV_SILENT=true node ./build/server.js
+
+Meterle optional 
