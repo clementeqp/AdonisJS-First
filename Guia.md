@@ -45,3 +45,7 @@
 * node ace configure @adonisjs/auth
 
 
+## Usar Hash en el password
+
+* npm i phc-argon2
+
