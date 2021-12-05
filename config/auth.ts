@@ -3,6 +3,8 @@ import { AuthConfig } from '@ioc:Adonis/Addons/Auth'
 
 
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Mapping
@@ -45,7 +47,7 @@ const authConfig: AuthConfig = {
       |
       */
       tokenProvider: {
-        type: 'api',
+        type: 'bearer',
         driver: 'database',
         table: 'api_tokens',
         foreignKey: 'user_id',

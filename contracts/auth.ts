@@ -6,6 +6,11 @@
  */
 
 
+import { LucidProviderConfig } from '@ioc:Adonis/Addons/Auth';
+import { OATGuardContract } from '@ioc:Adonis/Addons/Auth';
+import { OATGuardConfig } from '@ioc:Adonis/Addons/Auth';
+import { SessionGuardContract } from '@ioc:Adonis/Addons/Auth';
+import { LucidProviderContract } from '@ioc:Adonis/Addons/Auth';
 import User from 'App/Models/User'
 
 declare module '@ioc:Adonis/Addons/Auth' {

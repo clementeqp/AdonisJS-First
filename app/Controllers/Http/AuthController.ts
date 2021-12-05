@@ -6,22 +6,22 @@ import User from 'App/Models/User';
 
 
 
-export default class AuthController{
-  public async register({request,response}: HttpContextContract){
+export default class AuthController {
+  public async register({ request, response }: HttpContextContract) {
     const validations = await schema.create({
       name: schema.string({}),
-      email: schema.string({},[
+      email: schema.string({}, [
         rules.email(),
-        rules.unique({table: 'users', column:'email'})
+        rules.unique({ table: 'users', column: 'email' })
 
-        ]),
-        password: schema.string({},[
-          rules.confirmed()
+      ]),
+      password: schema.string({}, [
+        rules.confirmed()
 
-        ])
+      ])
     })
 
-    const data = await request.validate({schema:validations})
+    const data = await request.validate({ schema: validations })
     const user = await User.create(data)
 
 
@@ -29,41 +29,18 @@ export default class AuthController{
 
   }
 
-  public async login({request,auth}: HttpContextContract){
+  public async login({ auth, request, response }: HttpContextContract) {
 
-    const email =request.input('email')
-    const password =request.input('password')
+    const email = request.input('email')
+    const password = request.input('password')
 
-    const token= await auth.use('api').attempt(email,password)
-
-    return token.toJSON()
-
-
-    /* const validations = await schema.create({
-      email: schema.string({},[
-        rules.email(),
-        rules.unique({table: 'users', column:'email'})
-
-        ]),
-        password: schema.string({},[
-          rules.confirmed()
-
-        ])
-    })
-
-    const data = await request.validate({schema:validations})
-    const user = await User.findBy('email',data.email)
-
-    if(!user){
-      return response.unauthorized('Invalid credentials')
+    try {
+      const token = await auth.use('api').attempt(email, password, {
+        expiresIn: '7days'
+      })
+      return token.toJSON()
+    } catch {
+      return response.badRequest('Invalid credentials')
     }
-
-    const token = await auth.attempt(data.email,data.password)
-
-    return response.ok({
-      token,
-      user
-    }) */
-
   }
 }
