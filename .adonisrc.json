@@ -21,22 +21,10 @@
     "./providers/AppProvider",
     "@adonisjs/core",
     "@adonisjs/lucid",
-    "@adonisjs/auth",
-    "@adonisjs/view"
+    "@adonisjs/auth"
   ],
   "aceProviders": [
     "@adonisjs/repl"
-  ],
-  "metaFiles": [
-    {
-      "pattern": "resources/views/**/*.edge",
-      "reloadServer": false
-    }
   ]
-
-
-
-
-
 
 }
