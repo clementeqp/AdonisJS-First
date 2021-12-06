@@ -30,7 +30,6 @@
   "metaFiles": [
     {
       "pattern": "resources/views/**/*.edge",
-      "pattern": "app/views/**/*.edge",
       "reloadServer": false
     }
   ],
