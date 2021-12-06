@@ -47,4 +47,4 @@ Route.group(() => {
   Route.post('/register', 'AuthController.register');
   Route.post('/login', 'AuthController.login');
 
-}).prefix('api');
+}).prefix('api/v1');
