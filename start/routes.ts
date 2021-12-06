@@ -13,7 +13,7 @@ Route.get('/users/:id', 'UsersController.show'); */
 // login and register
 
 Route.get('/', async ({view}) => {
-  return view.render('welcome');})
+  return view.render('resources\views\wellcome.edge');})
 
 Route.group(() => {
   Route.group(() => {
