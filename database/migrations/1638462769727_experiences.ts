@@ -7,10 +7,10 @@ export default class Experiences extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
 
-      table.integer('candidate_id').references('candidates.id')
-      table.integer('skill_id').references('id').inTable('skills')
+      table.integer('candidate_id').references('candidates.id').notNullable()
+      table.integer('skill_id').references('id').inTable('skills').notNullable()
 
-      table.integer('level')
+      table.integer('level').notNullable()
 
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
