@@ -12,9 +12,9 @@ export default class SkillsController {
     //validation
     const body = request.body();
     // Create instance and save to database
-    const skill = await Skill.create(body);
-    response.status(201).send('created');
-    return skill
+    const skills = await Skill.create(body);
+    response.status(201);
+    return skills;
 
   }
 
