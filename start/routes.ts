@@ -15,8 +15,9 @@ Route.get('/users/:id', 'UsersController.show'); */
 
 Route.get('/', async () => {
   return  'AdonisJS by Clemen\n' +'Acceso mediante Postman, Registro: https://adonisjs-crud-clemen.herokuapp.com/api/v1/register\n'
-  + 'login, (consigue tu token): https://adonisjs-crud-clemen.herokuapp.com/api/v1/login\n'+'modelos: candidates, users, experiences, skills\n'+
-  'para crear una experiencia, metodo POST: https://adonisjs-crud-clemen.herokuapp.com/api/experiences\n'
+  + 'login, (consigue tu token): https://adonisjs-crud-clemen.herokuapp.com/api/v1/login\n'+'Modelos: candidates, users, experiences, skills\n'+
+  'Metodos: Post, Get, Put, Delete (Crear, Mostrar,Actualizar,Borrar)\n'+'Ejemplo de uso: https://adonisjs-crud-clemen.herokuapp.com/api/candidates/1\n'
+
 });
 
 
