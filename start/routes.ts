@@ -13,7 +13,7 @@ Route.get('/users/:id', 'UsersController.show'); */
 // login and register
 
 Route.get('/', async () => {
-  return { hello: 'world' }
+  return  'AdonisJS by Clemen\n' + '../api/register\n' + '../api/login\n' + 'for get the token use the header Authorization: Bearer {token}'
 })
 
 Route.group(() => {
