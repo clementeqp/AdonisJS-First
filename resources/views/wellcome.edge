@@ -1,0 +1,57 @@
+<h2>Api by Clemen in AdonisJS 5</h2>
+
+<div>
+RUTAS: 
+┌────────────┬─────────────────────┬───────────────────────────────┬────────────┬────────────────────┐
+│ Method     │ Route               │ Handler                       │ Middleware │ Name               │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ HEAD, GET  │ /uploads/*          │ Closure                       │            │ drive.local.serve  │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ HEAD, GET  │ /                   │ Closure                       │            │                    │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ HEAD, GET  │ /api/users          │ UsersController.index         │ auth       │ users.index        │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ POST       │ /api/users          │ UsersController.store         │ auth       │ users.store        │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ HEAD, GET  │ /api/users/:id      │ UsersController.show          │ auth       │ users.show         │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ PUT, PATCH │ /api/users/:id      │ UsersController.update        │ auth       │ users.update       │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ DELETE     │ /api/users/:id      │ UsersController.destroy       │ auth       │ users.destroy      │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ HEAD, GET  │ /api/candidates     │ CandidatesController.index    │ auth       │ candidates.index   │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ POST       │ /api/candidates     │ CandidatesController.store    │ auth       │ candidates.store   │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ HEAD, GET  │ /api/candidates/:id │ CandidatesController.show     │ auth       │ candidates.show    │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ PUT, PATCH │ /api/candidates/:id │ CandidatesController.update   │ auth       │ candidates.update  │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ DELETE     │ /api/candidates/:id │ CandidatesController.destroy  │ auth       │ candidates.destroy │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ HEAD, GET  │ /api/skils          │ SkillsController.index        │ auth       │ skils.index        │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ POST       │ /api/skils          │ SkillsController.store        │ auth       │ skils.store        │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ HEAD, GET  │ /api/skils/:id      │ SkillsController.show         │ auth       │ skils.show         │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ PUT, PATCH │ /api/skils/:id      │ SkillsController.update       │ auth       │ skils.update       │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ DELETE     │ /api/skils/:id      │ SkillsController.destroy      │ auth       │ skils.destroy      │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ HEAD, GET  │ /api/experience     │ ExperiencesController.index   │ auth       │ experience.index   │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ POST       │ /api/experience     │ ExperiencesController.store   │ auth       │ experience.store   │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ HEAD, GET  │ /api/experience/:id │ ExperiencesController.show    │ auth       │ experience.show    │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ PUT, PATCH │ /api/experience/:id │ ExperiencesController.update  │ auth       │ experience.update  │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ DELETE     │ /api/experience/:id │ ExperiencesController.destroy │ auth       │ experience.destroy │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ POST       │ /api/register       │ AuthController.register       │            │                    │
+├────────────┼─────────────────────┼───────────────────────────────┼────────────┼────────────────────┤
+│ POST       │ /api/login          │ AuthController.login          │            │                    │
+└────────────┴─────────────────────┴───────────────────────────────┴────────────┴────────────────────┘
+
+</div>
