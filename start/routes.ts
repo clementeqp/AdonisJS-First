@@ -12,8 +12,9 @@ Route.get('/users/:id', 'UsersController.show'); */
 
 // login and register
 
-Route.get('/', async ({view}) => {
-  return view.render('welcome');})
+Route.get('/', async () => {
+  return { hello: 'world' }
+})
 
 Route.group(() => {
   Route.group(() => {
