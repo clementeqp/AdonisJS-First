@@ -13,7 +13,9 @@ Route.get('/users/:id', 'UsersController.show'); */
 // login and register
 
 Route.get('/', async () => {
-  return  'AdonisJS by Clemen\n' + '../api/register\n' + '../api/login\n' + 'for get the token use the header Authorization: Bearer {token}'
+  return  'AdonisJS by Clemen\n' +'acceso mediante Postman, Registro: https://adonisjs-crud-clemen.herokuapp.com/api/register\n'
+  + 'login, (consigue tu token): https://adonisjs-crud-clemen.herokuapp.com/api/login\n'+'modelos: candidates, users, experiences, skills\n'+
+  'para crear una experiencia, metodo POST: https://adonisjs-crud-clemen.herokuapp.com/api/experiences\n'
 })
 
 Route.group(() => {
@@ -23,9 +25,9 @@ Route.group(() => {
 
     Route.resource('/candidates', 'CandidatesController').apiOnly();
 
-    Route.resource('/skils', 'SkillsController').apiOnly();
+    Route.resource('/skills', 'SkillsController').apiOnly();
 
-    Route.resource('/experience', 'ExperiencesController').apiOnly();
+    Route.resource('/experiences', 'ExperiencesController').apiOnly();
 
   }).middleware('auth');
 
