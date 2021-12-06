@@ -8,6 +8,11 @@ export default class CandidatesController {
     return Candidate.all();
   }
 
+  // SELECT * from users (FindOne)
+  public async show({params}: HttpContextContract) {
+    return Candidate.findOrFail(params.id);
+  }
+
 
   //Create
   public async store({request,response}: HttpContextContract) {

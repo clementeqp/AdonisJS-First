@@ -2,10 +2,15 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Skill from 'App/Models/Skill';
 
 export default class SkillsController {
+  // findAll
   public async index( ) {
     return Skill.all();
   }
 
+  // findOne
+  public async show({params}: HttpContextContract) {
+    return Skill.findOrFail(params.id);
+  }
 
   //Create
   public async store({request,response}: HttpContextContract) {

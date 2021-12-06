@@ -2,10 +2,15 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Experience from 'App/Models/Experience';
 
 export default class ExperiencesController {
+  // findAll
   public async index( ) {
     return Experience.all();
   }
 
+  // findOne
+  public async show({params}: HttpContextContract) {
+    return Experience.findOrFail(params.id);
+  }
 
   //Create
   public async store({request,response}: HttpContextContract) {
