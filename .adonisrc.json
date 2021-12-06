@@ -32,11 +32,9 @@
       "pattern": "resources/views/**/*.edge",
       "reloadServer": false
     }
-  ],
+  ]
 
-    "directories": {
-      "views": "./app/views"
-    }
+
 
 
 
