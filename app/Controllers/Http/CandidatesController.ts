@@ -4,9 +4,37 @@ import Candidate from 'App/Models/Candidate';
 export default class CandidatesController {
 
   // SELECT * from users (FindAll)
-  public async index( ) {
+  /* public async index({request}) {
+    if (request.input('active')){
+      return Candidate.query().where('active', request.input('active'));
+    }
     return Candidate.all();
+  } */
+
+  public async index({request}) {
+    if(request.input('location')){
+      // Devuelve todos los candidatos que tengan la misma localización o remote = true
+      return Candidate.query().where('location', request.input('location'))
+              .orWhere('remote', true)
+              .andWhere('active',true);
+
+    }else if(request.input('country')){
+      return Candidate.query().where('country', request.input('country'))
+              .andWhere('active',true);
+
+    }else if(request.input('remote')){
+      return Candidate.query().where('remote', true)
+              .andWhere('active',true);
+              //Salario mayor o igual a salary_desired
+    }else if(request.input('salary_desired')){
+      return Candidate.query().where('salary_desired', request.input('salary_desired'))
+              .andWhere('active',true);
+    }else{
+      return Candidate.query().where('active',true);
+    }
+
   }
+
 
   // SELECT * from users (FindOne)
   public async show({params}: HttpContextContract) {
