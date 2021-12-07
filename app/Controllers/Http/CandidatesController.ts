@@ -11,27 +11,27 @@ export default class CandidatesController {
     return Candidate.all();
   } */
 
-  public async index({request}) {
-    if(request.input('location')){
+  public async index({ request }) {
+    if (request.input('location')) {
       // Devuelve todos los candidatos que tengan la misma localización o remote = true
       return Candidate.query().where('location', request.input('location'))
-              .orWhere('remote', true)
-              .andWhere('active',true);
-
-    }else if(request.input('country')){
+        .orWhere('remote', true)
+        .andWhere('active', true);
+      // Filtro por pais
+    } else if (request.input('country')) {
       return Candidate.query().where('country', request.input('country'))
-              .andWhere('active',true);
-
-    }else if(request.input('remote')){
+        .andWhere('active', true);
+      // filtro por remoto
+    } else if (request.input('remote')) {
       return Candidate.query().where('remote', true)
-              .andWhere('active',true);
+        .andWhere('active', true);
 
-              //Devuelve todos los que tengan salry_desired menor que el salario actual
-    }else if(request.input('salary_desired')){
+      //Devuelve todos los que tengan salary_desired menor que el salario por parametro
+    } else if (request.input('salary_desired')) {
       return Candidate.query().where('salary_desired', '<', request.input('salary_desired'))
-              .andWhere('active',true);
+        .andWhere('active', true);
 
-    }else{
+    } else {
       return Candidate.query().where('active', true);
     }
 
@@ -40,13 +40,13 @@ export default class CandidatesController {
 
 
   // SELECT * from users (FindOne)
-  public async show({params}: HttpContextContract) {
+  public async show({ params }: HttpContextContract) {
     return Candidate.findOrFail(params.id);
   }
 
 
   //Create
-  public async store({request,response}: HttpContextContract) {
+  public async store({ request, response }: HttpContextContract) {
     //validation
     const body = request.body();
     // Create instance and save to database
@@ -57,7 +57,7 @@ export default class CandidatesController {
   }
 
   // Update
-  public async update({request,params}: HttpContextContract) {
+  public async update({ request, params }: HttpContextContract) {
     const body = request.body();
     const candidate = await Candidate.findOrFail(params.id);
     candidate.merge(body);
@@ -66,7 +66,7 @@ export default class CandidatesController {
   }
 
   // destroy
-  public async destroy({params,response}: HttpContextContract) {
+  public async destroy({ params, response }: HttpContextContract) {
     const candidate = await Candidate.findOrFail(params.id);
     await candidate.delete();
     response.status(204);
