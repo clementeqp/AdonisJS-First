@@ -25,13 +25,16 @@ export default class CandidatesController {
     }else if(request.input('remote')){
       return Candidate.query().where('remote', true)
               .andWhere('active',true);
-              //Salario mayor o igual a salary_desired
+
+              //Devuelve todos los que tengan salry_desired menor que el salario actual
     }else if(request.input('salary_desired')){
-      return Candidate.query().where('salary_desired', request.input('salary_desired'))
+      return Candidate.query().where('salary_desired', '<', request.input('salary_desired'))
               .andWhere('active',true);
+
     }else{
-      return Candidate.query().where('active',true);
+      return Candidate.query().where('active', true);
     }
+
 
   }
 
