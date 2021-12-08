@@ -18,13 +18,15 @@ Route.get('/', async () => {
           +'_______________\n\n'
           +'AdonisJS by Clemen\n\n'
           +'Acceso mediante Postman, Registro: https://adonisjs-crud-clemen.herokuapp.com/api/v1/register\n\n'
-          + 'login, (consigue tu token): https://adonisjs-crud-clemen.herokuapp.com/api/v1/login\n\n'
+          +'login, (consigue tu token): https://adonisjs-crud-clemen.herokuapp.com/api/v1/login\n\n'
           +'Modelos: candidates, users, experiences, skills\n\n'
           +'Metodos: Post, Get, Put, Delete (Crear, Mostrar,Actualizar,Borrar)\n\n'
           +'Primero registrate, luego haz login, luego usa el token para acceder a los metodos\n\n'
           +'Ejemplo de uso: https://adonisjs-crud-clemen.herokuapp.com/api/v1/candidates/1\n\n'
 
 });
+
+
 
 
 
@@ -40,6 +42,9 @@ Route.group(() => {
     Route.resource('/skills', 'SkillsController').apiOnly();
 
     Route.resource('/experiences', 'ExperiencesController').apiOnly();
+
+    
+    Route.get('/candidates/:name/:level', 'CandidatesController.findBySkillsAndExperiences');
 
   }).middleware('auth');
 
