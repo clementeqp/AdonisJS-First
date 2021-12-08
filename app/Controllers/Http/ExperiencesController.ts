@@ -1,5 +1,4 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Candidate from 'App/Models/Candidate';
 import Experience from 'App/Models/Experience';
 
 
