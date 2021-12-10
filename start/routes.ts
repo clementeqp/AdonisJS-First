@@ -46,7 +46,9 @@ Route.group(() => {
 
     Route.get('/candidates/:name/:level', 'CandidatesController.findBySkillsAndExperiences');
 
-    Route.get('/candidatesfull', 'CandidatesController.candidatesWithSkillsAndExperiences');
+    Route.get('/candidatesfull', 'CandidatesController.findCandidatesWithSkillsAndExperiences');
+
+    Route.get('/candidatesfull/:id', 'CandidatesController.findCandidateWithSkillsAndExperiences');
 
   }).middleware('auth');
 
