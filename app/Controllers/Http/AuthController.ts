@@ -39,13 +39,13 @@ export default class AuthController {
       const token = await auth.use('api').attempt(email, password, {
         expiresIn: '7days'
       })
-       
+
       return response.ok({
         token,
         user: auth.user
       })
 
-      //return token.toJSON()
+      
     } catch {
       return response.badRequest('Invalid credentials')
     }

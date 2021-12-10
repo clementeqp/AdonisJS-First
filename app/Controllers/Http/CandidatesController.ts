@@ -38,16 +38,25 @@ export default class CandidatesController {
 
   }
 
+  //filtro por skill y experiences
+  public async candidatesWithSkillsAndExperiences({ response }: HttpContextContract) {
+    const candidates = await Candidate
+      .query()
+      .preload('experiences')
+
+
+    return response.json(candidates);
+  }
 
 
   //filtro por skill y experiences
   public async findBySkillsAndExperiences({ params, response }: HttpContextContract) {
     const candidates = await Candidate
-            .query()
-            .preload('experiences', (expQuery) => {
-                  expQuery.where('level', params.level)
-            .preload('skill', (skillQuery) => { skillQuery.where('name', params.name) }
-              ).preload('skill')
+      .query()
+      .preload('experiences', (expQuery) => {
+        expQuery.where('level', params.level)
+          .preload('skill', (skillQuery) => { skillQuery.where('name', params.name) }
+          ).preload('skill')
       })
 
     return response.json(candidates);

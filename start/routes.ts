@@ -43,8 +43,10 @@ Route.group(() => {
 
     Route.resource('/experiences', 'ExperiencesController').apiOnly();
 
-    
+
     Route.get('/candidates/:name/:level', 'CandidatesController.findBySkillsAndExperiences');
+
+    Route.get('/candidatesfull', 'CandidatesController.candidatesWithSkillsAndExperiences');
 
   }).middleware('auth');
 
