@@ -1,7 +1,7 @@
-import { schema } from '@ioc:Adonis/Core/Validator'
+import { schema, rules } from '@ioc:Adonis/Core/Validator';
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-export default class CreateExperienceValidator {
+export default class CreateCandidateValidator {
   constructor(protected ctx: HttpContextContract) {}
 
   /*
@@ -23,18 +23,19 @@ export default class CreateExperienceValidator {
    *     ])
    *    ```
    */
-  public schema = schema.create({})
-
-  /**
-   * Custom messages for validation failures. You can make use of dot notation `(.)`
-   * for targeting nested fields and array expressions `(*)` for targeting all
-   * children of an array. For example:
-   *
-   * {
-   *   'profile.username.required': 'Username is required',
-   *   'scores.*.number': 'Define scores as valid numbers'
-   * }
-   *
-   */
+  public schema = schema.create({
+    name: schema.string({}, [rules.maxLength(50)]),
+    email: schema.string({}, [rules.email()]),
+    mobile: schema.string({}, [rules.maxLength(12)]),
+    birthdate: schema.date({format: 'iso'}),
+    salary_now: schema.number(),
+    salary_desired: schema.number(),
+    location: schema.string({}, [rules.maxLength(150)]),
+    country: schema.string({}, [rules.maxLength(150)]),
+    remote: schema.boolean(),
+    mobility: schema.boolean(),
+    active: schema.boolean(),
+    userId: schema.number()
+  })
   public messages = {}
 }

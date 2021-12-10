@@ -50,6 +50,8 @@ Route.group(() => {
 
     Route.get('/candidatesfull/:id', 'CandidatesController.findCandidateWithSkillsAndExperiences');
 
+    Route.post('logout', 'AuthController.logout')
+
   }).middleware('auth');
 
   // login and register

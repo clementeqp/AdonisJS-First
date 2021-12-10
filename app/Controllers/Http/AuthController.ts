@@ -45,9 +45,16 @@ export default class AuthController {
         user: auth.user
       })
 
-      
+
     } catch {
       return response.badRequest('Invalid credentials')
     }
+  }
+
+  public async logout({ auth, response }: HttpContextContract) {
+
+    await auth.logout()
+    return response.status(200)
+
   }
 }

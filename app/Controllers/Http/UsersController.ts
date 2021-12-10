@@ -6,31 +6,23 @@ import { schema, rules} from '@ioc:Adonis/Core/Validator';
 export default class UsersController {
 
   // SELECT * from users
-  public async index() {
-    return User.all();
+  public async index({response}) {
+        const users = await User.all()
+      return response.json(users)
   }
 
 
 
+  // Crear user
   public async store({request,response}: HttpContextContract) {
-    //validation
-    const newUserSchema = schema.create({
 
-      name: schema.string({ trim: true }),
+    const data = request.only(['name', 'email', 'password']);
 
-      email: schema.string({ trim: true },[
-        rules.email(),
-      ]),
-      password: schema.string({},[
-        rules.confirmed(),
-      ])
-    });
+    const user = await User.create(data);
 
-    const payload = await request.validate({schema: newUserSchema});
-    // Create instance and save to database
-    const user = await User.create(payload);
-    response.status(201);
-    return user;
+    return response.json(user);
+
+
   }
 
 
