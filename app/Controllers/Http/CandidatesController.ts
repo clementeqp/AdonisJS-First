@@ -14,22 +14,27 @@ export default class CandidatesController {
   public async index({ request }) {
     if (request.input('location')) {
       // Devuelve todos los candidatos que tengan la misma localización o remote = true
-      return Candidate.query().where('location', request.input('location'))
-        .orWhere('remote', true)
-        .andWhere('active', true);
+      return Candidate.query()
+                      .where('location', request
+                      .input('location'))
+                      .orWhere('remote', true)
+                      .andWhere('active', true);
       // Filtro por pais
     } else if (request.input('country')) {
-      return Candidate.query().where('country', request.input('country'))
-        .andWhere('active', true);
+      return Candidate.query()
+                      .where('country', request.input('country'))
+                      .andWhere('active', true);
       // filtro por remoto
     } else if (request.input('remote')) {
-      return Candidate.query().where('remote', true)
-        .andWhere('active', true);
+      return Candidate.query()
+                      .where('remote', true)
+                      .andWhere('active', true);
 
       //Devuelve todos los que tengan salary_desired menor que el salario por parametro
     } else if (request.input('salary_desired')) {
-      return Candidate.query().where('salary_desired', '<', request.input('salary_desired'))
-        .andWhere('active', true);
+      return Candidate.query()
+                      .where('salary_desired', '<', request.input('salary_desired'))
+                      .andWhere('active', true);
 
     } else {
       return Candidate.query().where('active', true);
@@ -69,13 +74,29 @@ export default class CandidatesController {
   }
 
 
+  /**
+   *filtrar candidates por skills y experiences
+    public async findBySkillsAndExperiences({ params, response }: HttpContextContract) {
+      const candidates = await Candidate.query().where('active', 1)
+      .whereHas('experiences', (expQuery) => {expQuery.where('skill_id', params.skill_id)})
+      .andWhereHas('experiences', (expQuery) => {expQuery.where('level','>=', params.level)})
+      .preload('experiences',(expQuery)=>{expQuery.preload('skill',(skillQuery)=>{skillQuery.where('id', params.skill_id)})})
 
-  //filtro por skill y experiences
+
+
+        return response.json(candidates)
+  }
+
+   */
+
+  //filtrar candidates por skills y experiences
   public async findBySkillsAndExperiences({ params, response }: HttpContextContract) {
     const candidates = await Candidate.query().where('active', 1)
-            .preload('experiences', (experiencesQuery) => { experiencesQuery.where('level', params.level)
-                .preload('skill'), (skillQuery) => { skillQuery.where('name', params.skill) }
-            })
+            .whereHas('experiences', (expQuery) => {expQuery.where('skill_id', params.skill_id)})
+            .andWhereHas('experiences', (expQuery) => {expQuery.where('level','>=', params.level)})
+            .preload('experiences',(expQuery)=>{expQuery.preload('skill',(skillQuery)=>{skillQuery.where('id', params.skill_id)})})
+
+
 
         return response.json(candidates)
   }

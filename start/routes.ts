@@ -44,7 +44,7 @@ Route.group(() => {
     Route.resource('/experiences', 'ExperiencesController').apiOnly();
 
 
-    Route.get('/candidates/:name/:level', 'CandidatesController.findBySkillsAndExperiences');
+    Route.get('/candidates/:skill_id/:level', 'CandidatesController.findBySkillsAndExperiences');
 
     Route.get('/candidatesfull', 'CandidatesController.findCandidatesWithSkillsAndExperiences');
 
